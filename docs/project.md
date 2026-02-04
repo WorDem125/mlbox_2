@@ -317,3 +317,34 @@ def clear_context_time_series():
 # 7) Открыть ноутбук db_inspection.ipynb и прогнать проверки (из секции 7)
 # 8) Если всё ок — уменьшать point-step (50) для более плотного контекста
 # ======================================================================================
+
+
+
+
+mlbox_2/
+├─ app.py                      # точка входа (удобно для запуска “одной командой”)
+├─ .env                        # твои локальные секреты (лучше НЕ пушить)
+├─ .env.example                # шаблон переменных (в GitHub пушим)
+├─ requirements.txt
+├─ README.md
+
+├─ src/
+│  ├─ common/
+│  │  ├─ db.py                 # DBConfig, get_connection, read_df, set_search_path
+│  │  └─ utils.py              # to_dict/json safe helpers и т.п.
+│  ├─ agent/
+│  │  ├─ train_agent.py        # “агент”: собрать датасет → обучить 3+ моделей → выбрать лучшую → сохранить → записать model_runs
+│  │  └─ schedule.py           # (опц.) запуск каждые 30 минут / защита от параллельного обучения
+│  ├─ api/
+│  │  ├─ main.py               # FastAPI/Flask приложение: /health /predict /predict_batch
+│  │  └─ schemas.py            # Pydantic модели (если FastAPI)
+│  └─ streamlit_app/
+│     └─ dashboard.py          # UI, который зовёт API (НЕ обучает)
+
+├─ notebooks/
+│  ├─ module_b_update.ipynb    # разметка/кластеризация сегментов (как ты делал)
+│  └─ module_c_train.ipynb     # эксперименты обучения (перед переносом в agent)
+
+├─ models/                     # сюда сохраняем *.joblib (пушить можно, но лучше через релиз/артефакты)
+├─ data/                       # (опц.) локальные файлы
+└─ logs/                       # логи агента/апи

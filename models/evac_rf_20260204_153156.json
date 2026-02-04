@@ -1,0 +1,31 @@
+{
+  "best_f1_macro": 1.0,
+  "all_results": [
+    {
+      "algorithm": "logreg",
+      "f1_macro": 0.8943442546961861,
+      "train_seconds": 0.05003213882446289,
+      "n_train": 6497,
+      "n_test": 2166
+    },
+    {
+      "algorithm": "rf",
+      "f1_macro": 1.0,
+      "train_seconds": 0.5018730163574219,
+      "n_train": 6497,
+      "n_test": 2166
+    },
+    {
+      "algorithm": "gboost",
+      "f1_macro": 1.0,
+      "train_seconds": 2.345837116241455,
+      "n_train": 6497,
+      "n_test": 2166
+    }
+  ],
+  "label_distribution": {
+    "easy": 5133,
+    "medium": 3267,
+    "hard": 263
+  }
+}
